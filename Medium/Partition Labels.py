@@ -21,6 +21,9 @@
 #             res.append(end-i+1)
 #             i = end+1
 #         return res
+from collections import defaultdict
+
+
 class Solution(object):
     def partitionLabels(self, S):
         """
