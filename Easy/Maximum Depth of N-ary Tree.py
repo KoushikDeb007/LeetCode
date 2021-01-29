@@ -13,7 +13,12 @@ class Node:
         self.children = children
 """
 
-class Solution:
+
+        ##########  recursive approach ########
+import collections
+
+
+class SolutionNo1:
     def maxDepth(self, root: 'Node') -> int:
         if not root:
             return 0
@@ -21,3 +26,23 @@ class Solution:
         for child in root.children:
             mv = max(mv, self.maxDepth(child))
         return 1 + mv
+
+
+        ########## BFS APPROACH ##########
+
+class SolutionNo2:
+    def maxDepth(self, root: 'Node') -> int:
+
+        if not root:
+            return 0
+
+        mdepth = 1
+        queue = collections.deque([(root, 1)])
+
+        while (len(queue)):
+            par, depth = queue.popleft()
+            for child in par.children:
+                queue.append((child, depth + 1))
+            mdepth = max(mdepth, depth)
+        return mdepth
+
